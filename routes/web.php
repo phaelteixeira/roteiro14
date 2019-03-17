@@ -1,5 +1,7 @@
 <?php
 
+use App\Genero;
+use App\Serie;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +18,19 @@ Route::get('/', function () {
 });
 
 Route::get('/generos', function(){
-    return view('generos');
+    $generos = Genero::all();
+    foreach($generos as $genero){
+        echo "ID: ", $genero->id, "<br>";
+        echo "NOME: ", $genero->nome,"<br>";
+    }
 });
 
 Route::get('/series',function(){
-    return view('series');
+    $series = Serie::all();
+    foreach($series as $serie){
+        echo "ID: ", $serie->id,"<br>";
+        echo "NOME: ", $serie->nome, "<br>";
+        echo "SINOPSE: ", $serie->sinopse,"<br>";
+        echo "GENERO ID: ", $serie->genero_id, "<br>";
+    }
 });
